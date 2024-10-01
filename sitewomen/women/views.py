@@ -4,7 +4,11 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 
 
-menu = ['О сайте', 'Добавить статью', 'Обратная связь', 'Войти']
+menu = [{'title': "О сайте", 'url_name': 'about'},
+        {'title': "Добавить статью", 'url_name': 'add_page'},
+        {'title': "Обратная связь", 'url_name': 'contact'},
+        {'title': "Войти", 'url_name': 'login'}
+]
 
 
 data_db = [
@@ -29,20 +33,16 @@ def about(request):
     return render(request, 'women/about.html', context=data)
 
 
-def categories(request, cat_id):
-    return HttpResponse(f'Статьи по категориям, id {cat_id}')
+def add_page(request):
+    return HttpResponse('Добавление статьи')
 
 
-def categories_by_slug(request, cat_slug):
-    print(request.GET)
-    return HttpResponse(f'Статьи по категориям, slug {cat_slug}')
+def contact(request):
+    return HttpResponse('Обратная связь')
 
 
-def archive(request, year):
-    if year > 2024:
-        uri = reverse('cats', args=('music', ))
-        return redirect(uri)
-    return HttpResponse(f'Статьи по категориям, год {year}')
+def login(request):
+    return HttpResponse('Авторизация')
 
 
 def page_not_found(request, exception):
