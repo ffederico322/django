@@ -42,7 +42,7 @@ def contact(request):
 
 
 def login(request):
-    return HttpResponse('Авторизация')
+    return HttpResponse('Авторизаци')
 
 
 def page_not_found(request, exception):
