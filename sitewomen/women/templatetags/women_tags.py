@@ -11,6 +11,6 @@ def get_categories():
 
 
 @register.inclusion_tag('women/list_categories.html')
-def show_categories():
+def show_categories(cat_selected=0):
     cats = views.cats_db
-    return {'cats': cats}
+    return {'cats': cats, 'cat_selected':cat_selected}

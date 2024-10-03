@@ -38,6 +38,7 @@ def index(request):
         'title': 'Главная страница',
         'menu': menu,
         'posts': list(filter(lambda x: x['is_published'], data_db)),
+        'cat_selected': 0,
     }
 
     return render(request, 'women/index.html', context=data)
@@ -61,8 +62,13 @@ def login(request):
 
 
 def show_category(request, cat_id):
-    return index(request)
-
+    data = {
+        'title': 'Главная страница',
+        'menu': menu,
+        'posts': list(filter(lambda x: x['is_published'], data_db)),
+        'cat_selected': cat_id,
+    }
+    return render(request, 'women/index.html', context=data)
 
 def page_not_found(request, exception):
     return HttpResponseNotFound('Страница не найдена')
