@@ -8,9 +8,9 @@
 	{{ p.author.username|default:"неизвестен" }}</p>
 	<p class="last">Дата: {{p.time_update|date:"d-m-Y H:i:s"}}</p>
     </div>
-{% if p.photo %}
+	{% if p.photo %}
 		<p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
-{% endif %}
+	{% endif %}
 
 				<h2>{{p.title}}</h2>
     {% autoescape off %}
